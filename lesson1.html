@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="robots" content="noindex">
+
+		<title>Introduction to Python Programming</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/serif.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown data-separator="^---$" data-separator-vertical="^>>>$">
+					<textarea data-template>
+					## Introduction to Python Programming
+					---
+					### 本講座の目的
+					Pythonを使って<span style=font-weight:bold;>何ができるのか</span>を学び、<br><span style=font-weight:bold;>自分が何を機械にやらせたいのかを考える</span>
+					<p class="fragment">「Pythonでなにができるのか」理解できれば<br>分からないことは自分で調べられる</p>
+					>>>
+					### 本講座の対象者
+					- 業務効率化に興味がある人
+					- プログラミングを体験してみたい人
+					- 何か新しいことを始めてみたい人
+					<p>なるべく簡単な表現で説明するようにします！</p>
+					>>>
+					### 使用するツール
+					- ArcGIS Pro
+					- Google Colaboratory（自宅で学習したい方）
+					<p class="fragment">いずれもJupyter Notebookと呼ばれる環境</p>
+					<p class="fragment">記述・実行をステップ・バイ・ステップで行える<br>比較的初心者に優しい</p>
+					---
+					### プログラムとは何か
+					<p class="fragment">「入力」された情報を「加工」して「出力」するもの</p>
+					<p class="fragment"><span style="color:red">何が入力できて何を出力したいのかをまず把握する</span></p>
+					>>>
+					### プログラムの例
+					<table>
+						<thead>
+							<tr>
+								<th nowrap>種別</th>
+								<th>内容</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>入力</td>
+								<td>"Hey Siri, 今日の天気は？"</td>
+							</tr>
+							<tr>
+								<td>出力</td>
+								<td>"現在曇っていて、気温は24度です。午後から雨が降るでしょう。"</td>
+							</tr>
+							<tr>
+								<td>加工</td>
+								<td>音声データを認識<br>今日の天気をインターネットから取得<br>返答用の文章を生成<br>読み上げ</td>
+							</tr>
+						</tbody>
+					</table>
+					>>>
+					### （余談）私が趣味で作ったもの
+					<img src="img/irremo.jpg" class="r-stretch">
+					<p class="fragment">赤外線学習リモコン</p>
+					<p class="fragment">Appleホームアプリと連携し<br>普通のエアコンをスマート家電化</p>
+					>>>
+					材料
+					- Raspberry Pi（超格安パソコン）
+					- 赤外線受信モジュール
+					- 赤外線発信回路
+					- 制御プログラム：<span style="font-weight: bold;">Pythonでコーディング</span>
+					- - -
+					必要な技能
+					- 電気回路の初歩的な知識
+					- はんだづけスキル
+					- 最低限のLinux＆サーバー管理の知識
+					- <span style="font-weight: bold;">Pythonの読み書き</span>
+					<p style="font-size:50%">大学時代、AVRマイコンで苦労してLED光らせてたのは一体何だったんだろう…と思うレベルの手軽さ</p>
+					>>>
+					どの分野も特別詳しいわけではないけれど…
+					<p class="fragment">多少知っていれば<br>細かいことは調べながら<br>技術を組み合わせることができる！</p>
+					<br>
+					<p class="fragment" style="font-size:70%;">いつか3Dプリンタを買ったらCADでケースを設計して作りたい…！</p>
+					---
+					### 具体的に何をすれば？
+					<p class="fragment">1. 処理フローを考える</p>
+					<p class="fragment">2. プログラムを書く　</p>
+					>>>
+					### 慣れないうちは<br>プログラムを書く前に<br>処理フローを書き出しましょう
+					いきなりプログラムを書き始めると<br>自分が何をしたかったのか分からなくなってきます
+					---
+					## 「変数」と「代入」
+					>>>
+					### 変数とは
+					- 変数：variable（＝変化するモノ vary+able）
+					- 数学でいう変数は「数」のこと
+					- ITの世界では「データ」のこと
+					>>>
+					### 代入とは
+					- 代入：assign（＝割り当てる）
+					- 数学の「代入」＝substitute（代わりの）
+					- 本当は日本語訳が不適切
+					- プログラム中ではイコール（＝）で表す
+					>>>
+					身長から標準体重を算出するプログラム
+					```python[]
+					height = 1.75  #身長[m]
+					stdWeight = height * height * 22  #BMI=22となる体重
+					```
+					- - -
+					<table style="font-size:50%;">
+						<thead>
+							<tr>
+								<td>変数名</td>
+								<td>割り当てられる変数（データ）</td>
+								<td>備考</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>height</td>
+								<td>1.75</td>
+								<td>人間が直接指定</td>
+							</tr>
+							<tr>
+								<td>stdWeight</td>
+								<td>height*height*22</td>
+								<td>heightに割り当てられているデータ（=1.75）を使用</td>
+							</tr>
+						</tbody>
+					</table>
+					<br>
+					<p class="fragment" style="font-size:80%;">データ（変数）に名札（変数名）を貼り付けるイメージ</p>
+					<p class="fragment" style="font-size:60%;">
+						よく「変数とはデータを入れる箱のことです」と説明している書籍や<br>
+						WEBページがありますが、厳密には適切な表現ではありません。
+					</p>
+					<p class="fragment">変数名＝変数（データ）</p>
+					>>>
+					### いろいろな変数
+					<p style="font-size:70%">ただの数字だけでなく<br>文字列やリストも<br>変数として扱うことができます。</p>
+					<p style="font-size:50%">※リスト（配列）：複数の変数をひとまとめにしたもの</p>
+
+					<pre data-id="code-animation">
+						<code class="python" data-trim data-line-numbers="|1-2|4-5|7-10">
+							<script type="text/template">
+							# 文字列を変数として扱う
+							starName = "Pole Star"
+
+							# リストを変数として扱う
+							summerTriangle = ["Altair", "Deneb", "Vega"]
+
+							# リストの要素を抜き出す
+							print(summerTriangle[0])   # "Altair" 0から始まることに注意！
+							print(summerTriangle[1])   # "Deneb"
+							print(summerTriangle[2])   # "Vega"
+							</script>
+						</code>
+					</pre>
+
+					---
+					### 条件分岐と繰り返し処理
+					>>>
+					機械に作業をやらせるからには<br>手作業では面倒なことをやらせてみたい
+					- 「入力」に対して、一定の条件で処理を分岐させる
+					- 同じ処理を何回も繰り返させる
+					>>>
+					### 条件分岐：if
+					<p style="font-size:70%">身長と体重を入力し、標準体重との比較によって<br>異なるメッセージを表示するプログラム</p>
+
+					<pre data-id="code-animation"><code class="python" data-trim data-line-numbers="|1-3|5-6|8-10|11-12|13-14"><script type="text/template">
+					# 身長・体重を設定する
+					height = 1.7
+					weight = 65
+
+					# 標準体重を計算する（この場合の計算結果は63.58）
+					stdWeight = height * height * 22
+
+					# 条件分岐：weight と stdWeight を比較
+					if weight > stdWeight:  #入力した体重の方が重い場合
+						print("ちょっと重いかも")
+					elif weight < stdWeight:  #入力した体重の方が軽い場合
+						print("ちょっと軽いかも")
+					else:  #どちらでもない＝入力した体重が標準体重と等しい場合
+						print("ぴったり！！")
+					</script></code></pre>
+					>>>
+					書き方
+					```python[]
+					if （条件式）:
+						処理内容
+					#以下、省略可能
+					elif （上記条件以外の場合に判定する条件）:
+						処理内容
+					else:
+						どれにも該当しないデータの処理内容
+					```
+					<p class="fragment">セミコロンとインデントを忘れない！！</p>
+					>>>
+					### 繰り返し処理：for
+					<p class="fragment">私が20年弱愛読しているマンガのセリフ</p>
+					<blockquote class="fragment" style="font-size:70%; width:100%;">
+					<p>
+					『素数』を数えて落ち着くんだ…<br>
+					『素数』は1と自分の数でしか割ることのできない孤独な数字……<br>
+					わたしに勇気を与えてくれる
+					</p>
+					</blockquote>
+					<p class="fragment">
+					ある数字Nが素数かどうかを調べるには<br>
+					2からN-1でNを順番に割ってみて<br>
+					割り切れた数がいくつあったかを確かめればよい
+					</p>
+					>>>
+					<pre data-id="code-animation"><code class="python" data-trim data-line-numbers="|1-2|4-5|7-8|9|10|12-14|15-16"><script type="text/template">
+					# キーボードから数字（整数）の入力を受け付けて、numberという変数名をつける
+					number = int(input("素数を判定したい2以上の自然数："))
+
+					# 割り切れた数を数えるためのカウンターを用意（初期値は0）
+					counter = 0
+
+					# 2〜N-1までの数で割り算を繰り返す
+					for i in range(2, number):  #range(a,b)は[a,a+1,...,b-1]というリストを出力する
+						if number % i == 0:  # %は剰余を求める演算子：余りが0ならば
+							counter = counter + 1  #カウンターに1を追加
+
+					# 最終的に割り切れた回数を調べる
+					if counter > 0:  #もしカウンターが0より大きければ割り切れる数があったので
+						print(f"{number}は孤独な数字ではありません")
+					else:
+						print(f"{number}は孤独な数字でした")
+					</script></code></pre>
+					---
+					### 演習
+					プログラムをガイドに沿って作成してみましょう。
+					<ol style="font-size:70%;">
+						<li>10進数で表記された緯度経度を60進数に変換して表示する</li>
+						<li>リスト内の複数の10進緯度経度を、繰り返し処理によって60進数に変換し、結果を表示する</li>
+						<li>以下の数理気候区分に基づき、2で使用した緯度経度を気候帯に分別する</li>
+					</ol>
+					<table style="font-size:60%">
+						<thead>
+							<tr>
+								<td>気候帯</td>
+								<td>緯度範囲</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>寒帯</td>
+								<td>66度33分より極側</td>
+							</tr>
+							<tr>
+								<td>温帯</td>
+								<td>23度26分以上66度33分以下</td>
+							</tr>
+							<tr>
+								<td>熱帯</td>
+								<td>23度26分より赤道側</td>
+							</tr>
+						</tbody>
+					</table>
+
+					まずは処理フローを整理してくださいね！<br>
+					Let's happy hacking!
+					</textarea>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
