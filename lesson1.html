@@ -19,7 +19,7 @@
 			<div class="slides">
 				<section data-markdown data-separator="^---$" data-separator-vertical="^>>>$">
 					<textarea data-template>
-					## Introduction to Python Programming
+					## Introduction to<br>Python Programming
 					---
 					### 本講座の目的
 					Pythonを使って<span style=font-weight:bold;>何ができるのか</span>を学び、<br><span style=font-weight:bold;>自分が何を機械にやらせたいのかを考える</span>
@@ -68,10 +68,34 @@
 					### （余談）私が趣味で作ったもの
 					<img src="img/irremo.jpg" class="r-stretch">
 					<p class="fragment">赤外線学習リモコン</p>
-					<p class="fragment">Appleホームアプリと連携し<br>普通のエアコンをスマート家電化</p>
+					<p class="fragment">Appleホームアプリと連携し<br>赤外線リモコンで動く家電をスマート家電化</p>
+					>>>
+					入力と出力を次のように設定しました。<br>このために必要なデータ加工とは？
+					<table>
+						<thead>
+							<tr>
+								<th nowrap>種別</th>
+								<th>内容</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>得たい出力</td>
+								<td>既存のリモコンと同じ赤外線信号</td>
+							</tr>
+							<tr>
+								<td>入力</td>
+								<td>Siri音声入力<br>（例）Hey Siri, エアコンつけて</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="fragment" style="font-size:70%;">既存のリモコン信号を受信し、赤外線LEDの点滅パターンを記録する</p>
+					<p class="fragment" style="font-size:70%;">Appleホームアプリとリモコンを連携させるためのサーバーを立てる<br>
+					（ホームアプリを使用することで、オートメーションや遠隔操作も可能）</p>
+					<p class="fragment" style="font-size:70%;">サーバーからリクエストが来たら、記録した点滅パターンを再現する</p>
 					>>>
 					材料
-					- Raspberry Pi（超格安パソコン）
+					- Raspberry Pi（超格安小型パソコン）
 					- 赤外線受信モジュール
 					- 赤外線発信回路
 					- 制御プログラム：<span style="font-weight: bold;">Pythonでコーディング</span>
@@ -86,7 +110,7 @@
 					どの分野も特別詳しいわけではないけれど…
 					<p class="fragment">多少知っていれば<br>細かいことは調べながら<br>技術を組み合わせることができる！</p>
 					<br>
-					<p class="fragment" style="font-size:70%;">いつか3Dプリンタを買ったらCADでケースを設計して作りたい…！</p>
+					<p class="fragment" style="font-size:70%;">いつか3Dプリンタを買ったらCADでケースを設計して自作したい…！</p>
 					---
 					### 具体的に何をすれば？
 					<p class="fragment">1. 処理フローを考える</p>
@@ -203,6 +227,66 @@
 					```
 					<p class="fragment">セミコロンとインデントを忘れない！！</p>
 					>>>
+					### 比較のための条件の記述方法
+					以下の記号（演算子）を用いることができます
+					<table style="font-size:70%;">
+						<thead>
+							<tr>
+								<th nowrap>記号</th>
+								<th>例</th>
+								<th>意味</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>==</td>
+								<td>a==b</td>
+								<td>aとbが等しいとき</td>
+							</tr>
+							<tr>
+								<td>!=</td>
+								<td>a!=b</td>
+								<td>aとbが等しくないとき</td>
+							</tr>
+							<tr>
+								<td>&gt;</td>
+								<td>a&gt;b</td>
+								<td>aがbより大きいとき</td>
+							</tr>
+							<tr>
+								<td>&gt;=</td>
+								<td>a&gt;=b</td>
+								<td>aがb以上のとき</td>
+							</tr>
+							<tr>
+								<td>&lt;</td>
+								<td>a&lt;b</td>
+								<td>aがbより小さいとき</td>
+							</tr>
+							<tr>
+								<td>&lt;=</td>
+								<td>a&lt;=b</td>
+								<td>aがb以下のとき</td>
+							</tr>
+							<tr>
+								<td>and</td>
+								<td>a and b</td>
+								<td>aとbが両方満たされるとき</td>
+							</tr>
+							<tr>
+								<td>or</td>
+								<td>a or b</td>
+								<td>aまたはbのどちらかが満たされるとき</td>
+							</tr>
+							<tr>
+								<td>not</td>
+								<td>not a</td>
+								<td>aではないとき</td>
+							</tr>
+						</tbody>
+					</table>
+
+					>>>
 					### 繰り返し処理：for
 					<p class="fragment">私が20年弱愛読しているマンガのセリフ</p>
 					<blockquote class="fragment" style="font-size:70%; width:100%;">
@@ -236,6 +320,36 @@
 					else:
 						print(f"{number}は孤独な数字でした")
 					</script></code></pre>
+					---
+					### 関数の作成
+					入力する値を変えて何回も同じ処理を行う場合は<br>**関数**を作成してみましょう。<br>
+					<br>
+					### 関数とは
+					関数：Function（＝機能、働き）<br>
+					「関数」という言葉も「変数」「代入」と同様、<br>数学用語から輸入されたもの
+					>>>
+					前ページの素数を判定するプログラムを関数化する
+					<pre data-id="code-animation"><code class="python" data-trim data-line-numbers="|1|2-12|13|15-16|17-18"><script type="text/template">
+					def primenum(number):  # def 関数名（引数）
+						# 割り切れた数を数えるためのカウンターを用意（初期値は0）
+						counter = 0
+						# 2〜N-1までの数で割り算を繰り返す
+						for i in range(2, number):
+							if number % i == 0:  # 余りが0ならば
+								counter = counter + 1  #カウンターに1を追加
+						# 最終的に割り切れた回数を調べる
+						if counter > 0:  #もしカウンターが0より大きければ割り切れる数があったので
+							print(f"{number}は孤独な数字ではありません")
+						else:
+							print(f"{number}は孤独な数字でした")
+						return counter  # 割り切れた回数を返す
+
+					isPrime1 = primenum(7)
+					print(isPrime1)
+					isPrime2 = primenum(9)
+					print(isPrime2)
+					</script></code></pre>
+					<p class="fragment" style="font-size:80%; color:red;">関数の中の変数を関数の外から呼び出すことはできません</p>
 					---
 					### 演習
 					プログラムをガイドに沿って作成してみましょう。

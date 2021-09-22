@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="robots" content="noindex">
+
+		<title>Library</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/serif.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown data-separator="^---$" data-separator-vertical="^>>>$">
+					<textarea data-template>
+					## Library
+					---
+					### ライブラリとは
+					複雑で高度なコーディングが必要な便利機能を<br>ひとまとめにして、初心者でも使いやすくしたもの
+					<p class="fragment">素人がやりたいなと思うようなことは<br>大抵先人がライブラリを用意してくれている</p>
+					>>>
+					### どんなライブラリが使えるか
+					<table>
+						<thead>
+							<tr>
+								<th>ライブラリ名</th>
+								<th>概要</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>arcpy</td>
+								<td>ArcGISの機能が使える</td>
+							</tr>
+							<tr>
+								<td>math</td>
+								<td>三角関数や円周率など数学に特化</td>
+							</tr>
+							<tr>
+								<td>pandas</td>
+								<td>統計量の表示やグラフ化</td>
+							</tr>
+							<tr>
+								<td>numpy</td>
+								<td>多次元配列を用いた計算</td>
+							</tr>
+							<tr>
+								<td>datetime</td>
+								<td>日付・時刻の取り扱い</td>
+							</tr>
+							<tr>
+								<td>os</td>
+								<td>ディレクトリやファイルの操作</td>
+							</tr>
+							<tr>
+								<td>pyautogui</td>
+								<td>GUI操作の自動化</td>
+							</tr>
+						</tbody>
+					</table>
+					>>>
+					### ライブラリの使い方
+					どんな機能が使えるかはGoogleで<br>「（ライブラリ名）　（やりたいこと）」<br>で調べるとだいたい出てきます
+					<pre data-id="code-animation"><code class="python" data-trim data-line-numbers="|1|2|4-5"><script type="text/template">
+					import arcpy  # import ライブラリ名
+					import numpy as np  # numpyライブラリをプログラム中でnpと省略して呼び出す
+
+					arr = np.random.rand(100)  # 100個の乱数を生成
+					np.mean(arr)  # 100個の乱数の平均を調べる
+					</script></code></pre>
+					<p class="fragment">使っていくうちに自然と覚えられます</p>
+					</textarea>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
