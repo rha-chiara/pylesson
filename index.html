@@ -1,58 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<meta name="robots" content="noindex">
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive" />
 
-		<title>Python Programming</title>
+  <!-- Site Properties -->
+  <title>Python Programming</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/solarized.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/reset.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/site.css">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-markdown data-separator="^---$" data-separator-vertical="^>>>$">
-					<textarea data-template>
-					<p>各スライドへのリンク</p>
-					<ol>
-						<li><a href="lesson1.html" target="_blank" rel="noopener noreferrer">Introduction to Python Programming</a></li>
-						<li><a href="lesson2.html" target="_blank" rel="noopener noreferrer">Library</a></li>
-						<li>GUI Automation（作成中）</li>
-					</ol>
-					---
-					<p>お役立ちリンク集</p>
-					<ul style="font-size:70%;">
-						<li style="padding: 10px 0;"><a href="https://google.co.jp" target="_blank" rel="noopener noreferrer">Google</a><br>まずはググる</li>
-						<li style="padding: 10px 0;"><a href="https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja" target="_blank" rel="noopener noreferrer">Google Colaboratory</a><br>Jupyter Notebook環境</li>
-						<li style="padding: 10px 0;"><a href="https://docs.python.org/ja/3/" target="_blank" rel="noopener noreferrer">Python3公式ドキュメント</a><br>困ったときはこちら</li>
-						<li style="padding: 10px 0;"><a href="https://pythondatascience.plavox.info/" target="_blank" rel="noopener noreferrer">Pythonでデータサイエンス</a><br>データサイエンティストにおすすめ</li>
-						<li style="padding: 10px 0;"><a href="http://vipprog.net/wiki/" target="_blank" rel="noopener noreferrer">プログラミングスレまとめ</a><br>手頃な練習問題</li>
-					</ul>
-					</textarea>
-				</section>
-			</div>
-		</div>
+  <link rel="stylesheet" type="text/css" href="./semui/components/container.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/grid.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/header.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/image.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/menu.css">
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+  <link rel="stylesheet" type="text/css" href="./semui/components/divider.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/list.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/segment.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/dropdown.css">
+  <link rel="stylesheet" type="text/css" href="./semui/components/icon.css">
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+  <style type="text/css">
+  body {
+    background-color: #FFFFFF;
+  }
+  .ui.menu .item img.logo {
+    margin-right: 1.5em;
+  }
+  .main.container {
+    margin-top: 7em;
+  }
+  .wireframe {
+    margin-top: 2em;
+  }
+  .ui.footer.segment {
+    margin: 5em 0em 0em;
+    padding: 5em 0em;
+  }
+  </style>
+
+</head>
+<body>
+
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="index.html" class="header item">
+        Python Programming
+      </a>
+      <a href="index.html" class="item">ホーム</a>
+      <div class="ui simple dropdown item">
+        メニュー <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="01.html">はじめに</a>
+          <a class="item" href="02.html">準備するもの</a>
+          <div class="divider"></div>
+          <div class="header">Lesson</div>
+          <div class="item">
+            <i class="dropdown icon"></i>
+            基礎編
+            <div class="menu">
+              <a class="item" href="L01-1.html">変数と代入</a>
+			  <a class="item" href="L01-2.html">繰り返し処理と分岐処理</a>
+			  <a class="item" href="L01-3.html">関数</a>
+            </div>
+          </div>
+          <a class="item" href="#">ライブラリの活用</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui main text container">
+    <h1 class="ui header">Python講座にようこそ</h1>
+    <p>はじめましての方は上部メニューから「はじめに」をご覧ください。</p>
+
+  </div>
+
+  <div class="ui inverted vertical footer segment">
+<!--
+    <div class="ui center aligned container">
+      <div class="ui stackable inverted divided grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 1</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 2</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Group 3</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Link One</a>
+            <a href="#" class="item">Link Two</a>
+            <a href="#" class="item">Link Three</a>
+            <a href="#" class="item">Link Four</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+      <div class="ui inverted section divider"></div>
+      <img src="assets/images/logo.png" class="ui centered mini image">
+      <div class="ui horizontal inverted small divided link list">
+        <a class="item" href="#">Site Map</a>
+        <a class="item" href="#">Contact Us</a>
+        <a class="item" href="#">Terms and Conditions</a>
+        <a class="item" href="#">Privacy Policy</a>
+      </div>
+    </div>
+-->
+  </div>
+</body>
+
 </html>
