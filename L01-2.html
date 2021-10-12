@@ -78,52 +78,97 @@
 
   <div class="ui main text container">
     <h1 class="ui orange header">基礎編　02.繰り返し処理と分岐処理</h1>
-    <h2 class="ui header">繰り返し処理</h2>
-    
-  </div>
-
-  <div class="ui main text container">
-    <h2 class="ui header">変数とは</h2>
-    <p><span style="font-weight:bold">変数</span>とは、自分がプログラムの中で取り扱おうとしているデータのことを言います。</p><p>例えば、いつも使ってるExcelファイルを開くプログラムであれば、「そのファイルはどこに保存されているのか」という情報（データ）を変数として与えてあげる必要があります。変数は用途によって、数字であったり、文字列であったり、複数のデータを一つのセットにしたものであったり、形はさまざまです。</p>
-    <h2 class="ui header">代入とは</h2>
+    <h2 class="ui header">繰り返し処理for</h2>
+    <p>同じような処理を機械的に繰り返して行いたい場合、<span style="font-weight:bold;">for文</span>と呼ばれる繰り返し処理を行うことで、プログラムの分量を少なくすることができます。</p>
+    <h2 class="ui header">for文の書き方</h2>
     <p>
-        <span style="font-weight:bold">代入</span>とは、プログラム中で変数を利用しやすいように、変数に対して名前を割り当てることです。プログラムでは次のように記述されます。
+        for文は次のような書式で記述します。
     </p>
     <pre>
-    <code class="python">    # 変数123を変数名varNumに割り当てる
-    varNum = 123
+    <code class="python">    for (繰り返す対象となる変数） in （繰り返す変数のリスト）:
+      繰り返し処理
 
-    # 変数あいうを変数名varStrに割り当てる
-    varStr = "あいう"
+    # 具体例：0から10までの数字を足していく処理
+    num = 0
+    for i in range(11):
+      num = num + i
+
+    print(num)
     </code>
     </pre>
+  <p>必ず守らなければいけないのは、<span style="font-weight:bold;">forと書き始めた行の一番後ろにコロン：をつける</span>ことと、<span style="font-weight:bold;">for文処理をしてほしい行は頭に一つインデントを入れる</span>ことです。</p>
+  <p>上の例では繰り返す対象となる変数をiと命名しましたが、自分で好きな名前をつけて構いません。ただし、同じ変数名をfor文の外で使ってしまうと、意図していない変数が割り当てられたまま処理を行なってしまう恐れがあるので、他では使わない名前をつけるのがベターです。</p>
+  <p>ちなみにrange()というのは、連続した数字を要素に持つリストを出力する機能です。range(11)とした場合、0から10まで（指定した数字である11を超えない値まで）1ずつ増えていくリスト[0,1,2,3,4,5,6,7,8,9,10]を出力します。</p>
+  <p>range()の使い方は次の通りです。</p>
+  <pre>
+  <code class="python">    # 数列の始まり、終わり、間隔を指定:range(start, stop, step)
+    range(2, 11, 2)  # [2,4,6,8,10]
 
+    # stepを省略した場合は1が自動的に指定される
+    range(2, 11)  # [2,3,4,5,6,7,8,9,10]
+
+    # stepとともにstartを省略した場合は、startに0が指定される
+    range(11)  # [0,1,2,3,4,5,6,7,8,9,10]
+
+    # stopを省略することはできない
+    # startだけ省略することはできない
+  </code>
+  </pre>
   </div>
 
   <div class="ui main text container">
-    <h2 class="ui header">日本語訳の弊害</h2>
-    <p>
-        プログラミングを経験したことのある方であれば、「変数とはデータを入れる箱のことです」という説明を聞いたことがあるかもしれません。実はこれ、数学の世界では成り立つ説明なのですが、プログラムの世界では適切ではありません。
-    </p>
-    <p>
-        もともと「変数」とは英語でvariable、つまり何か変化する<span style="font-weight:bold;">モノ</span>のことです。数学の世界では値（数字）のことを指しますが、プログラミングの世界では取り扱う<span style="font-weight:bold;">データ</span>のことを指します。
-    </p>
-    <p>
-        また、プログラミング界で代入と呼んでいる単語は、元々英語ではassign、つまり「<span style="font-weight:bold;">割り当てる</span>」なのです。数学界の代入を意味するsubstitute（代わりの）とは全く意味が違います。
-    </p>
-    <p>
-        つまり、x=1という記述に対して、数学では「xという値を1の代わりとする」という説明ができますが、プログラミングでは「xという名前を1というデータに割り当てる」という説明になるのです。
-    </p>
-    <p>
-        おそらく、プログラミングの言葉を日本語に翻訳するときに、数学と同じ記号を用いているために既存の数学用語をそのまま転用してしまい、このようなミスマッチが起きてしまったのではないかと思います。
-    </p>
+  <h2 class="ui header">繰り返し処理while</h2>
+  <p>
+      ある条件が満たされている間は繰り返しをしてほしいというときは、while文を使用します。
+  </p>
+  <pre>
+  <code class="python">    while （条件）:
+        条件が満たされているときに処理したい内容
+
+    # 具体例：0から10までの数字を足していく処理
+    num = 0
+    result = 0
+    while num < 10:
+        num = num + 1
+        result = result + num
+        
+    print(result)
+  </pre>
+  </div>
+
+  <div class="ui main text container">
+      <h2 class="ui header">分岐処理if</h2>
+      <p>「この条件のときはこういう処理、そうでなければ違う処理」というような条件分岐をさせたいときは、<span style="font-weight:bold;">if文</span>を用います。使い方は次の通りです。</p>
+  <pre>
+  <code class="python">    if （条件）:
+        処理内容
+    elif（他の条件）:  # これ以降は必要なければ省略可能
+        処理内容
+    else:
+        どの条件にも当てはまらないときの処理内容
+
+    # 具体例：指定された数字に応じて返答を変えるプログラム
+    time = 14
+    if time >= 4 and time < 12:  #timeが4以上12未満のとき
+        print("おはよう")
+    elif time >= 12 and time < 18:
+        print("こんにちは")  #timeが12以上18未満のとき
+    elif time >= 18 and time <= 24 or time < 4:  #timeが18以上24以下もしくは4未満のとき
+        print("こんばんは")
+    else:  #どの条件にも当てはまらないとき
+        print("今何時？")
+  </code>
+  </pre>
+  <p>
+  for文のときと同様、まとまりごとにインデントを入れてください。
+  </p>
   </div>
 
   <div class="ui main text container">
       <h2 class="ui header">演習</h2>
       <p>以下のリンクからGoogle Colaboratoryで演習ファイルを開きましょう。なお、演習ファイルを自分のGoogle Driveに保存したい場合は、演習ファイルを開いた後に「ファイル→ドライブにコピーを保存」を押してください。</p>
       <p>
-          <a href="http://colab.research.google.com/github/rha-chiara/pylesson/blob/master/exercise/Ex01.ipynb" target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
+          <a href="http://colab.research.google.com/github/rha-chiara/pylesson/blob/master/exercise/Ex02.ipynb" target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
       </p>
   </div>
 
