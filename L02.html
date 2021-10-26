@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>Python Programming - 基礎編　03.関数</title>
+  <title>Python Programming - ライブラリの活用</title>
 
   <link rel="stylesheet" type="text/css" href="./semui/components/reset.css">
   <link rel="stylesheet" type="text/css" href="./semui/components/site.css">
@@ -73,65 +73,59 @@
           <a class="item" href="L02.html">ライブラリの活用</a>
         </div>
       </div>
-    </div>
+  </div>
   </div>
 
   <div class="ui main text container">
-    <h1 class="ui orange header">基礎編　03.関数</h1>
-    <h2 class="ui header">自分で機能を作る</h2>
-    <p>同じような処理をプログラムのあちこちで行う場合、あらかじめ一連の処理を一つの機能としてひとまとめにしておくことで、後から簡単にその処理を呼び出して実行させることができます。ひとまとめにした機能のことを<span style="font-weight:bold;">関数</span>と呼びます。</p>
-    <p>関数という用語も数学用語から輸入されたものです。英語ではFunction、つまり何らかの機能や働きといった意味です。数学界の「関数」は、「ある変数に依存して決まる値」「入力値と出力値の対応を表す式」というような意味ですが、プログラミング界では必ずしも入力に対して数学のように何かしらの出力がある訳ではないので、もっと漠然と広い意味で「何らかの機能や働き」くらいの理解でよいかと思います。</p>
+    <h1 class="ui orange header">ライブラリの活用</h1>
+    <h2 class="ui header">便利機能のセット</h2>
+    <p>プログラミングに慣れてくると、ただの数値計算だけではなく、もっと複雑なことを処理させたくなります。しかし、複雑なことを実現するプログラムを自分でイチから作成するのは、ハードルが高いし面倒ですよね。それに、大抵の場合、自分がやりたいと思っているようなことは既に他の人も同じように考えていることが多いです。そして、偉大な先人が我々のようなプログラミングの後輩たちのために、複雑な処理を簡単に実現できるような道具を揃えておいてくれています。この道具のことを、一般的に<span style="font-weight:bold;">ライブラリ</span>と呼んでいます</p>
+    <p>皆さんがよく使いそうなライブラリを挙げます。</p>
+    <ul>
+        <li>math：三角関数や円周率など、数学に特化したもの</li>
+        <li>numpy：多次元配列を用いた演算</li>
+        <li>pandas：統計量の表示やグラフ化</li>
+        <li>datetime：日付・時刻の取り扱い</li>
+        <li>os：ディレクトリやファイル操作</li>
+        <li>arcpy：ArcGISの機能を使用</li>
+        <li>pyautogui：GUI操作の自動化</li>
+        <li>python-pptx：pptx（パワポ）ファイルの操作・編集</li>
+    </ul>
   </div>
 
   <div class="ui main text container">
-    <h2 class="ui header">関数の定義</h2>
-    <p>
-        関数を定義し、呼び出すには、次のように記述します。
-    </p>
+    <h2 class="ui header">使い方</h2>
+    <p>どのライブラリであっても、最初にやることは<span style="font-weight:bold;">インポート</span>です。通常、プログラムの最初に行います。インポートの方法はいくつかありますが、大きく分けて、ライブラリの機能全てをインポートする方法と、ライブラリの機能の中で特定のものを指定してインポートする方法の2つがあります。</p>
+    <p>インポートした後は、プログラム中で（ライブラリ名）.（機能名）で呼び出します。</p>
     <pre>
-    <code class="python">    # 関数の定義
-    def 関数名(引数1, 引数2, ...):
-        関数化したい処理
-        return 返したい値1, 返したい値2,... #省略可
+    <code class="python">    # ライブラリのインポート
+    import arcpy  # arcpyを普通にインポート
+    import numpy as np  # numpyをインポートし、プログラム中ではnpで呼び出す
+    import matplotlib.pyplot as plt  # matplotlibライブラリのpyplotという機能だけをインポートし、プログラム中ではpltとして呼び出す
+    from matplotlib import pyplot as plt  # 上と同じ働きをする（別の書き方）
 
-    # 関数の呼び出し
-    # 関数が何の値も返さないとき
-    関数名(引数1, 引数2, ...)
-    # 関数から返ってくる値があるとき
-    変数名 = 関数名(引数1, 引数2, ...)
-    # returnが複数ある場合はタプル（要素の変更ができないリスト）として返ってくる
-
-    # 具体例：2から指定した数字までの素数を調べるプログラム
-    def isPrime(number):
-        counter = 0 #割り切れた回数を数えるカウンター
-        # 2〜N-1で割り切れる個数を数える
-        for i in range(2, number):
-            if number % i == 0:
-                counter = counter + 1  #割り切れたらcounterに１を追加
-        if counter == 0: #素数ならその値を表示し、値1を返す
-            print(f"{number},")
-            return 1
-        else:  #素数でなければ値０を返す
-            return 0
-
-    #ここからメインの処理
-    inputNum = int(input("２以上の自然数を入力："))
-    countPrime = 0  #個数を数えるための変数
-
-    for num in range(2, inputNum+1):
-        countPrime = countPrime + isPrime(num)
-
-    print(f"個数は{countPrime}です")
+    # インポートしたライブラリを使う
+    # 3x3で要素がすべて0の二次元配列を作成
+    zeroArray = np.zeros((3, 3))
     </code>
     </pre>
-  <p>forやifのときと同様、コロンやインデントを忘れないでください。</p>
-  <p>他にも次のような注意点があります。</p>
-  <ul>
-      <li>関数の定義はプログラムのメイン処理の前にまとめて行うようにしましょう。</li>
-      <li>関数名は基本的には自分の好きな名前をつけられますが、Pythonにデフォルトで備わっている機能（printなど）と同じ名前はつけられません。</li>
-      <li>関数の中で使用される変数は、関数の外から呼び出すことはできません。関数の処理結果として関数の外に渡したい変数がある場合は、上の例のように　return 変数　と書きます。</li>
+  <p>個々のライブラリの詳しい使い方は、ここではとても挙げきれないので必要に応じて調べてください。ライブラリ名と使いたい機能を検索すれば、使い方の例が出てくると思います。</p>
+  </div>
 
-  </ul>
+  <div class="ui main text container">
+      <h2 class="ui header">便利機能を自分で作る</h2>
+      <p>ときには自分で作ったたくさんの関数を、複数のプログラムで使用したいことがあると思います。このようなときには、<span style="font-weight:bold;">モジュール</span>を作成することで自作関数をライブラリのように呼び出すことができます。</p>
+      <p>モジュールは、自作した関数（defから始まるブロック）を書いたファイルを「.py」という拡張子をつけて、後でこのモジュールを呼び出すプログラムが保存されている場所と同じところに保存することで作成できます。プログラムでインポートするには、import モジュール名（拡張子なし）と書きます。</p>
+      <pre>
+      <code class="python">    # モジュールのインポート
+      # myutil.pyというモジュールを作成したとする
+      import myutil  # myutilをインポート
+      import myutil as ut  # 「as なんとか」の書き方はモジュールでも可能
+
+      # インポートしたモジュールのsampleという機能を使う
+      a = ut.sample()
+      </code>
+      </pre>
 
   </div>
 
@@ -139,7 +133,7 @@
       <h2 class="ui header">演習</h2>
       <p>以下のリンクからGoogle Colaboratoryで演習ファイルを開きましょう。なお、演習ファイルを自分のGoogle Driveに保存したい場合は、演習ファイルを開いた後に「ファイル→ドライブにコピーを保存」を押してください。</p>
       <p>
-          <a href="http://colab.research.google.com/github/rha-chiara/pylesson/blob/master/exercise/Ex03.ipynb" target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
+          <a href="http://colab.research.google.com/github/rha-chiara/pylesson/blob/master/exercise/Ex04.ipynb" target="_blank" rel="noopener noreferrer"><img src="https://colab.research.google.com/assets/colab-badge.svg"></a>
       </p>
   </div>
 
